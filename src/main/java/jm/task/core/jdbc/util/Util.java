@@ -17,12 +17,12 @@ import java.util.Properties;
 public class Util {
     // реализуйте настройку соеденения с БД
     private static SessionFactory sessionFactory;
-    private static final String URL = "jdbc:postgresql://localhost:5432/user";
-    private static final String user = "postgres";
+    private static final String URL = "jdbc:mysql://localhost:3306/user";
+    private static final String user = "root";
     private static final String password = "1234";
-    private static final String driver = "org.postgresql.Driver";
+    private static final String driver = "com.mysql.cj.jdbc.Driver";
 
-    public static Connection PSQL() {
+    public static Connection MySQL() {
         Connection connection = null;
         try {
             Class.forName(driver);
@@ -43,7 +43,7 @@ public class Util {
                 settings.put(Environment.URL, URL);
                 settings.put(Environment.USER, user);
                 settings.put(Environment.PASS, password);
-                settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL95Dialect");
+                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 settings.put(Environment.HBM2DDL_AUTO, "update");

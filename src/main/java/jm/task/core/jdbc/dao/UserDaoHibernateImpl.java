@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
-    Session session = null;
     Transaction transaction = null;
 
     public UserDaoHibernateImpl() {
@@ -19,10 +18,10 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-        String create = "CREATE TABLE IF NOT EXISTS users (id SERIAL NOT NULL," +
-                "name character varying," +
-                "lastName character varying," +
-                "age smallint NOT NULL," +
+        String create = "CREATE TABLE IF NOT EXISTS users (`id` BIGINT NOT NULL AUTO_INCREMENT," +
+                "`name` VARCHAR(45)," +
+                "`lastName` VARCHAR(45)," +
+                "`age` SMALLINT NOT NULL," +
                 "PRIMARY KEY (id))";
         try {
             Session session = Util.getSessionFactory().openSession();
